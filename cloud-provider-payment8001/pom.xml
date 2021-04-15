@@ -55,6 +55,17 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <!--自己建的包-->
+        <dependency>
+            <groupId>com.carl.springcloud</groupId>
+            <artifactId>cloud-api-commons</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <!--eureka client-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
     </dependencies>
 
 </project>
