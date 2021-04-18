@@ -1,0 +1,16 @@
+server:
+  port: 80
+
+spring:
+  application:
+    name: consul-consumer-payment
+    #consul注册中心地址
+  cloud:
+    consul:
+      host: 192.168.134.137
+      port: 8500
+      discovery:
+        server-name: ${spring.application.name}
+        prefer-ip-address: true
+        heartbeat:
+          enabled: true
