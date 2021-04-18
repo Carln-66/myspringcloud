@@ -44,4 +44,9 @@ public class PaymentController {
             return new CommonResult(444, "无对应ID：" + id, null);
         }
     }
+
+    @GetMapping("/payment/lb")
+    public String getPayment() {
+        return serverPort;
+    }
 }
