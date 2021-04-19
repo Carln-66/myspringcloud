@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @Auther: Carl
@@ -33,7 +34,7 @@ public class PaymentController {
     public CommonResult<Payment> create(@RequestBody Payment payment) {
         int result = paymentService.create(payment);
         log.info("---插入结果" + payment);
-        if (result > 0)  {
+        if (result > 0) {
             return new CommonResult(200, "插入成功，server port: " + serverPort, result);
         } else {
             return new CommonResult(444, "插入失败", null);
@@ -44,7 +45,7 @@ public class PaymentController {
     public CommonResult<Payment> getPaymentById(@PathVariable("id") Long id) {
         Payment payment = paymentService.getPaymentById(id);
         log.info("---查询结果" + payment);
-        if (payment != null)  {
+        if (payment != null) {
             return new CommonResult(200, "查询成功啦，server port" + serverPort, payment);
         } else {
             return new CommonResult(444, "无对应ID：" + id, null);
@@ -55,7 +56,7 @@ public class PaymentController {
      * 获取注册服务的详细信息
      */
     @GetMapping(value = "/payment/discovery")
-    public Object discovery(){
+    public Object discovery() {
         List<String> services = discoveryClient.getServices();
         for (String elements : services) {
             log.info("element: " + elements);
@@ -69,6 +70,20 @@ public class PaymentController {
 
     @GetMapping("/payment/lb")
     public String getPayment() {
+        return serverPort;
+    }
+
+    /**
+     * 服务超时程序
+     */
+    @GetMapping(value = "/payment/feign/timeout")
+    public String paymentFeignTimeout() {
+        //暂停几秒钟线程
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return serverPort;
     }
 }
