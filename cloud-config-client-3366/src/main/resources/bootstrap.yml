@@ -1,5 +1,5 @@
 server:
-  port: 3355
+  port: 3366
 
 spring:
   application:
@@ -28,4 +28,3 @@ management:
     web:
       exposure:
         include: "*"
-

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RefreshScope
 public class ConfigClientController {
+
     @Value("${server.port}")
     private String serverPort;
 
