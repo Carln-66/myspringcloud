@@ -86,4 +86,12 @@ public class PaymentController {
         }
         return serverPort;
     }
+
+    /**
+     * zipkin测试
+     */
+    @GetMapping("/payment/zipkin")
+    public String paymentZipkin() {
+        return "=== zipkin server fall back ===";
+    }
 }
